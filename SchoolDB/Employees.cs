@@ -1,6 +1,16 @@
-﻿namespace SchoolDB;
+﻿using SchoolDB.Data;
+using SchoolDB.Models;
 
-public class Employees
+namespace SchoolDB;
+
+public static class Employees
 {
+    public static List<Employee> GetAllEmployees()
+    {
+        using (var context = new SchoolContext())
+        {
+            return context.Employees.ToList();
+        }
+    }
     
 }
