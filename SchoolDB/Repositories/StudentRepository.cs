@@ -1,6 +1,6 @@
 ﻿namespace SchoolDB;
 
-public class Students
+public class StudentRepository
 {
     
 }

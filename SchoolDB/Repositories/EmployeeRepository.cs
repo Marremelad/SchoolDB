@@ -1,4 +1,5 @@
-﻿using Azure.Core;
+﻿using System.Collections;
+using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using SchoolDB.Data;
 using SchoolDB.Models;
@@ -54,4 +55,5 @@ public static class Employees
                 .Single(e => e.EmployeeRoles.Any(er => er.RoleIdFkNavigation.RoleName == "Principal"));
         }
     }
+    
 }
