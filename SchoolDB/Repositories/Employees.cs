@@ -7,12 +7,19 @@ namespace SchoolDB;
 
 public static class Employees
 {
-    // Returns a list of all employees.
-    public static List<Employee> GetAllEmployees()
+    // Returns a dictionary of all employees and their assigned roles.
+    public static Dictionary<Employee, List<string>> GetEmployees()
     {
         using (var context = new SchoolContext())
         {
-            return context.Employees.ToList();
+            return context.EmployeeRoles
+                .GroupBy(r => r.EmployeeIdFkNavigation)
+                .Select(s => new
+                {
+                    s.Key,
+                    RoleName = s.Select(r => r.RoleIdFkNavigation.RoleName).ToList()
+                })
+                .ToDictionary(k => k.Key, v => v.RoleName);
         }
     }
     
