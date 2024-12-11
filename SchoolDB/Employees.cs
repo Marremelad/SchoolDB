@@ -37,4 +37,15 @@ public static class Employees
                 .ToList();
         }
     }
+    
+    // Return the employee with the principal role.
+    public static List<Employee> GetPrincipal()
+    {
+        using (var context = new SchoolContext())
+        {
+            return context.Employees
+                .Where(e => e.EmployeeRoles.Any(er => er.EmployeeRoleId == 1))
+                .ToList();
+        }
+    }
 }
