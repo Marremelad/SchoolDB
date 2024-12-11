@@ -8,5 +8,11 @@ class Program
         {
             Console.WriteLine(employee.EmployeeFirstName);
         }
+
+        foreach (var teacher in Employees.GetTeachers())
+        {
+            Console.WriteLine($"{teacher.EmployeeIdFkNavigation.EmployeeFirstName}" +
+                              $"{teacher.EmployeeIdFkNavigation.EmployeeLastName}");
+        }
     }
 }
