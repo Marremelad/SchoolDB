@@ -26,4 +26,15 @@ public static class Employees
                 .ToList();
         }
     }
+    
+    // Returns a list of all admins.
+    public static List<Admin> GetAdmins()
+    {
+        using (var context = new SchoolContext())
+        {
+            return context.Admins
+                .Include(e => e.EmployeeIdFkNavigation)
+                .ToList();
+        }
+    }
 }
