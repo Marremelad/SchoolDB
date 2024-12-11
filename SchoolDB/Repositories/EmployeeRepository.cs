@@ -6,7 +6,7 @@ using SchoolDB.Models;
 
 namespace SchoolDB;
 
-public static class Employees
+public static class EmployeeRepository
 {
     // Returns a dictionary of all employees and their assigned roles.
     public static Dictionary<Employee, List<string>> GetEmployees()
