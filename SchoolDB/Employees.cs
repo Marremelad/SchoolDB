@@ -44,7 +44,7 @@ public static class Employees
         using (var context = new SchoolContext())
         {
             return context.Employees
-                .Single(e => e.EmployeeRoles.Any(er => er.EmployeeRoleId == 1));
+                .Single(e => e.EmployeeRoles.Any(er => er.RoleIdFkNavigation.RoleName == "Principal"));
         }
     }
 }
