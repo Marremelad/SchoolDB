@@ -24,28 +24,6 @@ public static class EmployeeRepository
         }
     }
     
-    // Returns a list of all teachers.
-    public static List<Teacher> GetTeachers()
-    {
-        using (var context = new SchoolContext())
-        {
-            return context.Teachers
-                .Include(e => e.EmployeeIdFkNavigation)
-                .ToList();
-        }
-    }
-    
-    // Returns a list of all admins.
-    public static List<Admin> GetAdmins()
-    {
-        using (var context = new SchoolContext())
-        {
-            return context.Admins
-                .Include(e => e.EmployeeIdFkNavigation)
-                .ToList();
-        }
-    }
-    
     // Return the employee with the principal role.
     public static Employee GetPrincipal()
     {
@@ -55,5 +33,4 @@ public static class EmployeeRepository
                 .Single(e => e.EmployeeRoles.Any(er => er.RoleIdFkNavigation.RoleName == "Principal"));
         }
     }
-    
 }
