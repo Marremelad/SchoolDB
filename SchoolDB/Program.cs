@@ -6,11 +6,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        var studentsByFirstName = StudentRepository.GetStudents(s => s.ClassIdFkNavigation.ClassName , false);
+        var students = StudentRepository.GetStudentsByClass("SoftwareEngineering2024");
 
-        foreach (var student in studentsByFirstName)
-        {
-            Console.WriteLine(student.Key);
-        }
+        Console.WriteLine(students);
     }
 }
