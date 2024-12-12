@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using SchoolDB.Data;
 using SchoolDB.Models;
 
@@ -7,13 +8,20 @@ namespace SchoolDB;
 public class AdminRepository
 {
     // Returns a list of all admins.
-    public static List<Admin> GetAdmins()
+    public static Dictionary<string, IEnumerable<string>> GetAdmins()
     {
         using (var context = new SchoolContext())
         {
             return context.Admins
                 .Include(e => e.EmployeeIdFkNavigation)
-                .ToList();
+                .Select(s => new
+                {
+                    AdminName = $"{s.EmployeeIdFkNavigation.EmployeeFirstName} " +
+                                $"{s.EmployeeIdFkNavigation.EmployeeLastName}",
+                    ClassName = s.Classes.Where(c => c.AdminIdFk == s.AdminId)
+                        .Select(c => c.ClassName)
+                })
+                .ToDictionary(k => k.AdminName, v => v.ClassName);
         }
     }
 }
