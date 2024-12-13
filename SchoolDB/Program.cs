@@ -6,8 +6,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        var students = StudentRepository.GetStudentsByClass("SoftwareEngineering2024");
+        var employees = EmployeeRoleRepository.GetEmployees();
 
-        Console.WriteLine(students);
+        Console.WriteLine(employees);
     }
 }
