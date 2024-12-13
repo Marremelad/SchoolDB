@@ -24,7 +24,7 @@ public static class MainMenu
                 break;
             
             case MenuChoice.Students:
-                Console.WriteLine(StudentRepository.GetStudentsWithClasses(s => s.StudentLastName, true));
+                Console.WriteLine(StudentRepository.GetStudentsWithClasses(s => s.StudentLastName));
                 break;
         }
     }
