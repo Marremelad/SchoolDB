@@ -12,7 +12,7 @@ public class AdminRepository
     {
         using (var context = new SchoolContext())
         {
-            return string.Join("\n", context.Admins
+            var query = context.Admins
                 .Include(e => e.EmployeeIdFkNavigation)
                 .Select(s => new
                 {
@@ -21,8 +21,11 @@ public class AdminRepository
                     ClassName = s.Classes.Where(c => c.AdminIdFk == s.AdminId)
                         .Select(c => c.ClassName)
                 })
-                .ToDictionary(k => k.AdminName, v => v.ClassName)
-                .Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+                .ToDictionary(k => k.AdminName, v => v.ClassName);
+
+            var result = string.Join("\n", query.Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+
+            return string.IsNullOrEmpty(result) ? "No admins found" : result;
         }
     }
 }
