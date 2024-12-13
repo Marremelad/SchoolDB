@@ -9,7 +9,7 @@ namespace SchoolDB;
 public static class StudentRepository
 {
     // Returns a string of all students and their classes ordered by specific input.
-    public static string GetStudents<TKey>(
+    public static string GetStudentsWithClasses<TKey>(
         Expression<Func<Student, TKey>> orderByExpression,
         bool descending)
     {
@@ -22,25 +22,29 @@ public static class StudentRepository
                 ? query.OrderByDescending(orderByExpression)
                 : query.OrderBy(orderByExpression);
             
-            return string.Join("\n", query
+             var result = string.Join("\n", query
                 .Select(s =>
                     $"{s.StudentFirstName} " +
                     $"{s.StudentLastName} " +
                     $"{s.ClassIdFkNavigation.ClassName}"));
+
+             return string.IsNullOrEmpty(result) ? "No students found." : result;
         }
     }
 
     // Returns a string of students filtered by class name.
-    public static string GetStudentsByClass(string className)
+    public static string GetStudentsOrderedByClass(string className)
     {
         using (var context = new SchoolContext())
         {
-            return string.Join("\n",context.Students
+            var result = string.Join("\n",context.Students
                 .Where(s => s.ClassIdFkNavigation.ClassName == className)
                 .Select(s =>
                     $"{s.StudentFirstName} " +
                     $"{s.StudentLastName} " +
                     $"{s.ClassIdFkNavigation.ClassName}"));
+
+            return string.IsNullOrEmpty(result) ? "No students found." : result;
         }
     }
 }
