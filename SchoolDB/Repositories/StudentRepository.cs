@@ -11,7 +11,7 @@ public static class StudentRepository
     // Returns a string of all students and their classes ordered by specific input.
     public static string GetStudentsWithClasses<TKey>(
         Expression<Func<Student, TKey>> orderByExpression,
-        bool descending)
+        bool descending = false)
     {
         using (var context = new SchoolContext())
         {
