@@ -12,7 +12,7 @@ public class CourseAssignmentRepository
     {
         using (var context = new SchoolContext())
         {
-            return string.Join("\n", context.CourseAssignments
+            var query = context.CourseAssignments
                 .Join(context.Employees,
                     assignment => assignment.TeacherIdFkNavigation.EmployeeIdFk,
                     employee => employee.EmployeeId,
@@ -27,8 +27,11 @@ public class CourseAssignmentRepository
                     TeacherName = $"{s.First().employee.EmployeeFirstName} {s.First().employee.EmployeeLastName}",
                     Courses = s.Select(r => r.course.CourseName)
                 })
-                .ToDictionary(k => k.TeacherName, v => v.Courses)
-                .Select(q => $"{q.Key} {string.Join(", ", q.Value)}"));
+                .ToDictionary(k => k.TeacherName, v => v.Courses);
+
+            var result = string.Join("\n", query.Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+
+            return string.IsNullOrEmpty(result) ? "No Teachers found." : result;
         }
     }
 }
