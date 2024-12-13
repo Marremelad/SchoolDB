@@ -8,11 +8,11 @@ namespace SchoolDB;
 public class AdminRepository
 {
     // Returns a list of all admins.
-    public static Dictionary<string, IEnumerable<string>> GetAdminsWithClasses()
+    public static string GetAdminsWithClasses()
     {
         using (var context = new SchoolContext())
         {
-            return context.Admins
+            return string.Join("\n", context.Admins
                 .Include(e => e.EmployeeIdFkNavigation)
                 .Select(s => new
                 {
@@ -21,7 +21,8 @@ public class AdminRepository
                     ClassName = s.Classes.Where(c => c.AdminIdFk == s.AdminId)
                         .Select(c => c.ClassName)
                 })
-                .ToDictionary(k => k.AdminName, v => v.ClassName);
+                .ToDictionary(k => k.AdminName, v => v.ClassName)
+                .Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
         }
     }
 }
