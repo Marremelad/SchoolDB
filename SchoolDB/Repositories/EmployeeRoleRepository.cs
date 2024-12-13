@@ -6,7 +6,7 @@ namespace SchoolDB;
 public class EmployeeRoleRepository
 {
     // Returns a string of all employees and their assigned roles.
-    public static string GetEmployees()
+    public static string GetEmployeesWithRoles()
     {
         using (var context = new SchoolContext())
         {

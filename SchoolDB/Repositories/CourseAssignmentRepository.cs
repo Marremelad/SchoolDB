@@ -8,7 +8,7 @@ namespace SchoolDB;
 public class CourseAssignmentRepository
 {
     // Returns a list of all teachers and their assigned courses.
-    public static Dictionary<string, IEnumerable<string>> GetTeachersAndAssignedCourses()
+    public static Dictionary<string, IEnumerable<string>> GetTeachersWithCourses()
     {
         using (var context = new SchoolContext())
         {
