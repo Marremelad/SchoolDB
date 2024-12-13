@@ -11,10 +11,10 @@ public static class MenuText
         Students,
         
         // Student Menu.
+        SortByFirstName,
+        SortByLastName,
         OrderByDescending,
-        OrderByAscending,
-        OrderByFirstName,
-        OrderByLastName,
+        OrderByAscending
     }
     
     public static readonly Dictionary<string, MenuChoice> MainMenuText = new()
@@ -23,15 +23,15 @@ public static class MenuText
         { "Show all employees", MenuChoice.Employees },
         { "Show all admins", MenuChoice.Admins },
         { "Show all teachers", MenuChoice.Teachers },
-        { "Show all students", MenuChoice.Students },
+        { "Show all students", MenuChoice.Students }
     };
 
     public static readonly Dictionary<string, MenuChoice> StudentMenuText = new()
     {
         // Student Menu Options.
+        { "Sort by First Name", MenuChoice.SortByFirstName },
+        { "Sort by Last Name", MenuChoice.SortByLastName },
         { "Order by Descending", MenuChoice.OrderByDescending },
-        { "Order by Ascending", MenuChoice.OrderByAscending },
-        { "Order by First Name", MenuChoice.OrderByFirstName },
-        { "Order by Last Name", MenuChoice.OrderByLastName },
+        { "Order by Ascending", MenuChoice.OrderByAscending }
     };
 }
