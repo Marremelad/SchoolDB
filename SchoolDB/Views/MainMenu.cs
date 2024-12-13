@@ -7,7 +7,7 @@ public static class MainMenu
 {
     public static void DisplayMainMenu()
     {
-        var choice = DisplayUi.Display("Welcome To SchoolDB", MainMenuText);
+        var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MainMenuText);
 
         switch (choice)
         {
@@ -24,7 +24,7 @@ public static class MainMenu
                 break;
             
             case MenuChoice.Students:
-                Console.WriteLine(StudentRepository.GetStudentsWithClasses(s => s.StudentLastName));
+                StudentMenu.DisplayStudentMenu();
                 break;
         }
     }
