@@ -3,7 +3,7 @@ using Spectre.Console;
 
 namespace SchoolDB.Services;
 
-public static class DisplayMenu
+public static class DisplayUi
 {
     public static MenuText.MenuChoice Display(string title, Dictionary<string, MenuText.MenuChoice> choices)
     {

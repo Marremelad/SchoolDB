@@ -1,4 +1,5 @@
 ﻿using System.Security;
+using SchoolDB.Views;
 
 namespace SchoolDB;
 
@@ -6,8 +7,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        var employees = EmployeeRoleRepository.GetEmployeesWithRoles();
-
-        Console.WriteLine(employees);
+        MainMenu.DisplayMainMenu();
     }
 }
