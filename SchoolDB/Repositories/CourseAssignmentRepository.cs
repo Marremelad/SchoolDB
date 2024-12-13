@@ -8,11 +8,11 @@ namespace SchoolDB;
 public class CourseAssignmentRepository
 {
     // Returns a list of all teachers and their assigned courses.
-    public static Dictionary<string, IEnumerable<string>> GetTeachersWithCourses()
+    public static string GetTeachersWithCourses()
     {
         using (var context = new SchoolContext())
         {
-            return context.CourseAssignments
+            return string.Join("\n", context.CourseAssignments
                 .Join(context.Employees,
                     assignment => assignment.TeacherIdFkNavigation.EmployeeIdFk,
                     employee => employee.EmployeeId,
@@ -27,7 +27,8 @@ public class CourseAssignmentRepository
                     TeacherName = $"{s.First().employee.EmployeeFirstName} {s.First().employee.EmployeeLastName}",
                     Courses = s.Select(r => r.course.CourseName)
                 })
-                .ToDictionary(k => k.TeacherName, v => v.Courses);
+                .ToDictionary(k => k.TeacherName, v => v.Courses)
+                .Select(q => $"{q.Key} {string.Join(", ", q.Value)}"));
         }
     }
 }
