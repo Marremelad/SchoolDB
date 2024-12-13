@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var employees = EmployeeRoleRepository.GetEmployees();
+        var employees = EmployeeRoleRepository.GetEmployeesWithRoles();
 
         Console.WriteLine(employees);
     }

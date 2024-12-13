@@ -8,7 +8,7 @@ namespace SchoolDB;
 public class AdminRepository
 {
     // Returns a list of all admins.
-    public static Dictionary<string, IEnumerable<string>> GetAdmins()
+    public static Dictionary<string, IEnumerable<string>> GetAdminsWithClasses()
     {
         using (var context = new SchoolContext())
         {
