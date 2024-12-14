@@ -4,7 +4,7 @@ namespace SchoolDB;
 
 public static class CourseEnrolmentRepository
 {
-    public static string RecentGrades()
+    public static string GetRecentGrades()
     {
         using (var context = new SchoolContext())
         {
