@@ -41,8 +41,8 @@ public static class StudentMenu
 
     private static bool IsValidCombination(List<MenuChoice> choice)
     {
-        return ValidCombinations.Any(validCombination =>
-            validCombination.SequenceEqual(choice)); 
+        return ValidCombinations.Any(vc =>
+            vc.SequenceEqual(choice)); 
     }
 
     private static string ApplyOptions(List<MenuChoice> choice)
