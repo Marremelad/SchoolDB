@@ -26,6 +26,10 @@ public static class MainMenu
             case MenuChoice.Students:
                 StudentMenu.DisplayStudentMenu();
                 break;
+            
+            case MenuChoice.Classes:
+                ClassMenu.DisplayClassMenu();
+                break;
         }
     }
 }

@@ -1,6 +1,12 @@
-﻿namespace SchoolDB.Views;
+﻿using SchoolDB.Options;
+using SchoolDB.Services;
 
-public class ClassMenu
+namespace SchoolDB.Views;
+
+public static class ClassMenu
 {
-    
+    public static void DisplayClassMenu()
+    {
+        var choice = DisplayUi.DisplaySingleChoiceMenu("Select a class to see it's students", MenuText.ClassMenuText);
+    }
 }
