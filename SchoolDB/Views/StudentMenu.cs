@@ -48,7 +48,6 @@ public static class StudentMenu
     private static string ApplyOptions(List<MenuChoice> choice)
     {
         bool orderBy;
-            
         Expression<Func<Student, string>> sortBy;
             
         if ((int)choice[0] == 5 && (int)choice[1] == 7)
