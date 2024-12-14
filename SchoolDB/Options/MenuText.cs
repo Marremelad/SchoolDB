@@ -9,6 +9,7 @@ public static class MenuText
         Admins,
         Teachers,
         Students,
+        Classes,
         
         // Student Menu.
         SortByFirstName,
@@ -20,10 +21,11 @@ public static class MenuText
     public static readonly Dictionary<string, MenuChoice> MainMenuText = new()
     {
         // Main Menu Options.
-        { "Employees", MenuChoice.Employees },
+        { "All Employees", MenuChoice.Employees },
         { "Admins", MenuChoice.Admins },
         { "Teachers", MenuChoice.Teachers },
-        { "Students", MenuChoice.Students }
+        { "Students", MenuChoice.Students },
+        { "Classes", MenuChoice.Classes }
     };
 
     public static readonly Dictionary<string, MenuChoice> StudentMenuText = new()
