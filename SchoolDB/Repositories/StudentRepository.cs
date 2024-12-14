@@ -33,7 +33,7 @@ public static class StudentRepository
     }
 
     // Returns a string of students filtered by class name.
-    public static string GetStudentsFilteresByClass(string className)
+    public static string GetStudentsFilteredByClass(string className)
     {
         using (var context = new SchoolContext())
         {
