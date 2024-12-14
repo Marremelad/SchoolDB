@@ -51,7 +51,7 @@ public static class StudentMenu
             
         Expression<Func<Student, string>> sortBy;
             
-        if ((int)choice[0] == 4 && (int)choice[1] == 6)
+        if ((int)choice[0] == 5 && (int)choice[1] == 7)
         {
             sortBy = s => s.StudentFirstName;
             orderBy = false;
