@@ -19,36 +19,49 @@ public static class StudentMenu
     
     public static void DisplayStudentMenu()
     {
-        var choice = DisplayUi.DisplayMultiChoiceMenu("Select options to filter by", MenuText.StudentMenuText)
-            .Where(StudentMenuText.ContainsKey)
-            .Select(key => StudentMenuText[key])
-            .ToList();
-
-        var isValidCombination = ValidCombinations.Any(validCombination =>
-            validCombination.SequenceEqual(choice));
-        
-        if (isValidCombination)
+        while (true)
         {
-            bool orderBy;
+            Console.Clear();
             
-            Expression<Func<Student, string>> sortBy;
-            
-            if ((int)choice[0] == 4 && (int)choice[1] == 6)
+            var choice = DisplayUi.DisplayMultiChoiceMenu("Select options to filter by", MenuText.StudentMenuText)
+                .Where(StudentMenuText.ContainsKey)
+                .Select(key => StudentMenuText[key])
+                .ToList();
+        
+            if (IsValidCombination(choice))
             {
-                sortBy = s => s.StudentFirstName;
-                orderBy = false;
+                Console.WriteLine(ApplyOptions(choice));
+                break;
             }
-            else
-            {
-                sortBy = s => s.StudentLastName;
-                orderBy = true;
-            }
+            Console.WriteLine("Invalid combination selected.");
+            Thread.Sleep(2000);
+        }
+        
+    }
 
-            Console.WriteLine(StudentRepository.GetStudentsWithClasses(sortBy, orderBy));
+    private static bool IsValidCombination(List<MenuChoice> choice)
+    {
+        return ValidCombinations.Any(validCombination =>
+            validCombination.SequenceEqual(choice)); 
+    }
+
+    private static string ApplyOptions(List<MenuChoice> choice)
+    {
+        bool orderBy;
+            
+        Expression<Func<Student, string>> sortBy;
+            
+        if ((int)choice[0] == 4 && (int)choice[1] == 6)
+        {
+            sortBy = s => s.StudentFirstName;
+            orderBy = false;
         }
         else
         {
-            Console.WriteLine("Invalid combination selected.");
+            sortBy = s => s.StudentLastName;
+            orderBy = true;
         }
+
+        return StudentRepository.GetStudentsWithClasses(sortBy, orderBy);
     }
 }   
