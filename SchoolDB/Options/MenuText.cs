@@ -15,7 +15,12 @@ public static class MenuText
         SortByFirstName,
         SortByLastName,
         OrderByDescending,
-        OrderByAscending
+        OrderByAscending,
+        
+        // Class Menu.
+        SoftwareEngineering,
+        DataScience,
+        AiAndMachineLearning
     }
     
     public static readonly Dictionary<string, MenuChoice> MainMenuText = new()
@@ -35,5 +40,13 @@ public static class MenuText
         { "Sort by Last Name", MenuChoice.SortByLastName },
         { "Order by Descending", MenuChoice.OrderByDescending },
         { "Order by Ascending", MenuChoice.OrderByAscending }
+    };
+
+    public static readonly Dictionary<string, MenuChoice> ClassMenuText = new()
+    {
+        // Class Menu Options.
+        { "SoftwareEngineering2024", MenuChoice.SoftwareEngineering },
+        { "DataScience2024", MenuChoice.DataScience },
+        { "AIAndMachineLearning2024", MenuChoice.AiAndMachineLearning }
     };
 }
