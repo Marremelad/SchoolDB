@@ -42,6 +42,13 @@ public static class CourseEnrolmentRepository
     {
         using (var context = new SchoolContext())
         {
+            var courses = context.CourseEnrolments
+                .Select(s => s.CourseIdFkNavigation.CourseName);
+
+            // Checks if course exists or if any students have been enrolled to it.
+            if (!courses.Contains(course))
+                return $"Course '{course}' does not exist or has no students enrolled in it.";
+            
             var query = context.CourseEnrolments
                 .Where(ce => ce.CourseIdFkNavigation.CourseName == course)
                 .Select(s => $"{s.Grade}");
