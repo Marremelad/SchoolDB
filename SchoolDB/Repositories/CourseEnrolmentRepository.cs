@@ -51,7 +51,7 @@ public static class CourseEnrolmentRepository
                 numericGrades.Add(GradeMapping[grade]);
             }
 
-            if (numericGrades.Count == 0) return "No available data for this course.";
+            if (numericGrades.Count == 0) return $"{course}\nNo available data for this course.";
             
             var numericHighestGrade = numericGrades.Max();
             var numericLowestGrade = numericGrades.Min();
