@@ -6,6 +6,7 @@ namespace SchoolDB.Services;
 
 public static class DisplayUi
 {
+    // Display single choice menu.
     public static MenuChoice DisplaySingleChoiceMenu(string title,
         Dictionary<string, MenuChoice> choices)
     {
@@ -19,6 +20,7 @@ public static class DisplayUi
         return choices[choice];
     }
 
+    // Display multi choice menu.
     public static List<string> DisplayMultiChoiceMenu(string title,
         Dictionary<string, MenuChoice> choices)
     {
