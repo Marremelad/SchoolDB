@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolDB.Data;
 
-namespace SchoolDB;
+namespace SchoolDB.Repositories;
 
 public class AdminRepository
 {

@@ -96,7 +96,6 @@ public static class Helper
             new() { MenuText.MenuChoice.SortByLastName, MenuText.MenuChoice.OrderByDescending },
             new() { MenuText.MenuChoice.SortByFirstName, MenuText.MenuChoice.OrderByAscending },
             new() { MenuText.MenuChoice.SortByLastName, MenuText.MenuChoice.OrderByAscending }
-
         ];
         
         return validCombinations.Any(vc =>

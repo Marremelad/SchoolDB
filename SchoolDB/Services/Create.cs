@@ -1,4 +1,6 @@
 ﻿
+using SchoolDB.Repositories;
+
 namespace SchoolDB.Services;
 
 public class Create

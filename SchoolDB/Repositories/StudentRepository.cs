@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolDB.Data;
 using SchoolDB.Models;
 
-namespace SchoolDB;
+namespace SchoolDB.Repositories;
 
 public static class StudentRepository
 {
@@ -23,9 +23,9 @@ public static class StudentRepository
 
             var result = string.Join("\n", query
                 .Select(s =>
-                    $"{s.StudentFirstName} " +
-                    $"{s.StudentLastName} " +
-                    $"{s.ClassIdFkNavigation.ClassName}"));
+                    $"Name: {s.StudentFirstName} " +
+                    $"{s.StudentLastName}, " +
+                    $"Class: {s.ClassIdFkNavigation.ClassName}"));
 
             return string.IsNullOrEmpty(result) ? "No students found." : result;
         }

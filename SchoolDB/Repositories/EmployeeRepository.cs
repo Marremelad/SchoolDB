@@ -1,7 +1,7 @@
 ﻿using SchoolDB.Data;
 using SchoolDB.Models;
 
-namespace SchoolDB;
+namespace SchoolDB.Repositories;
 
 public static class EmployeeRepository
 {

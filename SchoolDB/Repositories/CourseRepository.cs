@@ -1,6 +1,6 @@
 ﻿using SchoolDB.Data;
 
-namespace SchoolDB;
+namespace SchoolDB.Repositories;
 
 public static class CourseRepository
 {

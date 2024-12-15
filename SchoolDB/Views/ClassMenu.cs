@@ -1,4 +1,5 @@
 ﻿using SchoolDB.Options;
+using SchoolDB.Repositories;
 using SchoolDB.Services;
 
 namespace SchoolDB.Views;
