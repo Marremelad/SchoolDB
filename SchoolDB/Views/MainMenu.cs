@@ -1,4 +1,6 @@
-﻿using SchoolDB.Services;
+﻿using SchoolDB.Options;
+using SchoolDB.Services;
+using Spectre.Console;
 using static SchoolDB.Options.MenuText;
 
 namespace SchoolDB.Views;
@@ -8,29 +10,49 @@ public static class MainMenu
     // Display the main menu.
     public static void DisplayMainMenu()
     {
-        var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MainMenuText);
-
-        switch (choice)
+        while (true)
         {
-            case MenuChoice.Employees:
-                Console.WriteLine(EmployeeRoleRepository.GetEmployeesWithRoles());
-                break;
+            Console.Clear();
             
-            case MenuChoice.Admins:
-                Console.WriteLine(AdminRepository.GetAdminsWithClasses());
-                break;
+            var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MainMenuText);
+
+            switch (choice)
+            {
+                case MenuChoice.Employees:
+                    EmployeeMenu.DisplayEmployeeMenu();
+                    break;
+                
+                case MenuChoice.Students:
+                    StudentMenu.DisplayStudentMenu();
+                    break;
             
-            case MenuChoice.Teachers:
-                Console.WriteLine(CourseAssignmentRepository.GetTeachersWithCourses());
-                break;
+                case MenuChoice.Classes:
+                    ClassMenu.DisplayClassMenu();
+                    break;
             
-            case MenuChoice.Students:
-                StudentMenu.DisplayStudentMenu();
-                break;
+                case MenuChoice.Courses:
+                    CourseMenu.DisplayCourseMenu();
+                    break;
+                
+                case MenuChoice.RecentlySetGrades:
+                    Console.WriteLine(CourseEnrolmentRepository.DisplayRecentlySetGrades());
+                    break;
+                
+                case MenuChoice.AddStudent:
+                    Create.CreateNewStudent();
+                    break;
+                
+                case MenuChoice.AddEmployee:
+                    Create.CreateNewEmployee();
+                    break;
+                
+                case MenuChoice.Exit:
+                    return;
+            }
+
+            AnsiConsole.MarkupLine("\n[green]'Q'[/] to quit, or [green]Enter[/] to get back to the main menu");
             
-            case MenuChoice.Classes:
-                ClassMenu.DisplayClassMenu();
-                break;
+            if (Console.ReadLine() == "Q".ToLower()) break;
         }
     }
 }

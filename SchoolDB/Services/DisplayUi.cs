@@ -1,28 +1,44 @@
-﻿using SchoolDB.Models;
+﻿using SchoolDB.Options;
 using Spectre.Console;
-using static SchoolDB.Options.MenuText;
 
 namespace SchoolDB.Services;
 
 public static class DisplayUi
 {
-    // Display single choice menu.
-    public static MenuChoice DisplaySingleChoiceMenu(string title,
-        Dictionary<string, MenuChoice> choices)
+    // Display single choice menu. Can handle both a dictionary and a list.
+    public static object DisplaySingleChoiceMenu<T>(string title, T choices)
     {
-        var choice = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title(title)
-                .PageSize(10)
-                .MoreChoicesText("Move up and down to reveal more options")
-                .AddChoices(choices.Select(s => s.Key)));
+        if (choices is Dictionary<string, MenuText.MenuChoice> dictChoices)
+        {
+            var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title(title)
+                    .PageSize(10)
+                    .MoreChoicesText("Move up and down to reveal more options")
+                    .AddChoices(dictChoices.Keys));
 
-        return choices[choice];
+            return dictChoices[choice];
+        }
+
+        if (choices is List<string> listChoices)
+        {
+            var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title(title)
+                    .PageSize(10)
+                    .MoreChoicesText("Move up and down to reveal more options")
+                    .AddChoices(listChoices));
+            
+            return choice;
+        }
+
+        throw new ArgumentException("Invalid choice type provided.");
     }
+
 
     // Display multi choice menu.
     public static List<string> DisplayMultiChoiceMenu(string title,
-        Dictionary<string, MenuChoice> choices)
+        Dictionary<string, MenuText.MenuChoice> choices)
     {
         var multipleChoices = AnsiConsole.Prompt(
             new MultiSelectionPrompt<string>()

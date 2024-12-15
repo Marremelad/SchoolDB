@@ -1,14 +1,11 @@
-﻿using System.Threading.Tasks.Dataflow;
-using Microsoft.EntityFrameworkCore;
-using SchoolDB.Data;
-using SchoolDB.Models;
+﻿using SchoolDB.Data;
 
 namespace SchoolDB;
 
 public class CourseAssignmentRepository
 {
     // Returns a list of all teachers and their assigned courses.
-    public static string GetTeachersWithCourses()
+    public static string DisplayTeachersWithCourses()
     {
         using (var context = new SchoolContext())
         {
@@ -29,7 +26,11 @@ public class CourseAssignmentRepository
                 })
                 .ToDictionary(k => k.TeacherName, v => v.Courses);
 
-            var result = string.Join("\n", query.Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+            var result = string.Join("\n", new[]
+            {
+                "Teachers",
+                string.Join("\n", query.Select(q => $"Name: {q.Key}, Courses: {string.Join(", ", q.Value)}"))
+            });
 
             return string.IsNullOrEmpty(result) ? "No Teachers found." : result;
         }

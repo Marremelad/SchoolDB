@@ -1,14 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using SchoolDB.Data;
-using SchoolDB.Models;
 
 namespace SchoolDB;
 
 public class AdminRepository
 {
     // Returns a list of all admins.
-    public static string GetAdminsWithClasses()
+    public static string DisplayAdminsWithClasses()
     {
         using (var context = new SchoolContext())
         {
@@ -23,7 +21,12 @@ public class AdminRepository
                 })
                 .ToDictionary(k => k.AdminName, v => v.ClassName);
 
-            var result = string.Join("\n", query.Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+            var result = string.Join("\n", new[] 
+            {
+                "Admins",
+                string.Join("\n", query.Select(q => $"Name: {q.Key}, Class: {string.Join(", ", q.Value)}"))
+            });
+
 
             return string.IsNullOrEmpty(result) ? "No admins found." : result;
         }

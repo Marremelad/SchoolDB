@@ -16,7 +16,7 @@ public static class CourseEnrolmentRepository
     };
     
     // Returns all grades set in the last 30 days.
-    public static string GetRecentGrades()
+    public static string DisplayRecentlySetGrades()
     {
         using (var context = new SchoolContext())
         {
@@ -38,13 +38,12 @@ public static class CourseEnrolmentRepository
     }
 
     // Returns grade statistics for a specific course. 
-    public static string GetCourseStats(string course)
+    public static string DisplayCourseStats(string course)
     {
         using (var context = new SchoolContext())
         {
-            var courses = context.CourseEnrolments
-                .Select(s => s.CourseIdFkNavigation.CourseName);
-
+            var courses = CourseRepository.DisplayCourses();
+            
             // Checks if course exists or if any students have been enrolled to it.
             if (!courses.Contains(course))
                 return $"Course '{course}' does not exist or has no students enrolled in it.";

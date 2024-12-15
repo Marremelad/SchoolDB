@@ -1,12 +1,11 @@
 ﻿using SchoolDB.Data;
-using SchoolDB.Models;
 
 namespace SchoolDB;
 
 public class EmployeeRoleRepository
 {
-    // Returns a string of all employees and their assigned roles.
-    public static string GetEmployeesWithRoles()
+    // Returns a string of all employees with assigned roles.
+    public static string DisplayEmployeesWithRoles()
     {
         using (var context = new SchoolContext())
         {
@@ -19,7 +18,11 @@ public class EmployeeRoleRepository
                 })
                 .ToDictionary(k => k.EmployeeName, v => v.RoleName);
 
-            var result = string.Join("\n", query.Select(q => $"{q.Key}: {string.Join(", ", q.Value)}"));
+            var result = string.Join("\n", new[]
+            {
+                "All employees with assigned roles",
+                string.Join("\n", query.Select(q => $"Name: {q.Key}, Role: {string.Join(", ", q.Value)}"))
+            });
 
             return string.IsNullOrEmpty(result) ? "No employees found." : result;
         }
