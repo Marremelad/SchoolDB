@@ -62,7 +62,8 @@ public static class StudentRepository
         }
 
     }
-
+    
+    // Adds a student to the database.
     public static void AddStudentToDatabase(string firstName, string lastName, string studentSsn, int classId)
     {
         using (var context = new SchoolContext())

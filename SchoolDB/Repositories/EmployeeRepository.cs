@@ -35,6 +35,7 @@ public static class EmployeeRepository
         }
     }
     
+    // Adds an employee to the database.
     public static void AddEmployeeToDatabase(string firstName, string lastName)
     {
         using (var context = new SchoolContext())
