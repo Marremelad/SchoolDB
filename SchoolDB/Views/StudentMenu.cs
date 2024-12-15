@@ -8,6 +8,7 @@ namespace SchoolDB.Views;
 
 public static class StudentMenu
 {
+    // List containing lists of valid combinations.
     private static readonly List<List<MenuChoice>> ValidCombinations =
     [
         new() { MenuChoice.SortByFirstName, MenuChoice.OrderByDescending },
@@ -17,17 +18,19 @@ public static class StudentMenu
 
     ];
     
+    // Display the student menu.
     public static void DisplayStudentMenu()
     {
         while (true)
         {
             Console.Clear();
             
+            // A list of type string that is converted into a list of type MenuChoice.
             var choice = DisplayUi.DisplayMultiChoiceMenu("Select options to filter by", MenuText.StudentMenuText)
                 .Where(StudentMenuText.ContainsKey)
                 .Select(key => StudentMenuText[key])
                 .ToList();
-        
+            
             if (IsValidCombination(choice))
             {
                 Console.WriteLine(ApplyOptions(choice));
@@ -39,12 +42,14 @@ public static class StudentMenu
         
     }
 
+    // Check if the chosen combination of options is valid.
     private static bool IsValidCombination(List<MenuChoice> choice)
     {
         return ValidCombinations.Any(vc =>
             vc.SequenceEqual(choice)); 
     }
 
+    // Applies the combination of options and calls the method to retrieve student information.
     private static string ApplyOptions(List<MenuChoice> choice)
     {
         bool orderBy;
