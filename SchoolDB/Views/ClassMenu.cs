@@ -32,7 +32,5 @@ public static class ClassMenu
             Console.WriteLine("Invalid combination selected.");
             Thread.Sleep(2000);
         }
-        
-        // Console.WriteLine(StudentRepository.GetStudentsFilteredByClass(chosenClass));
     }
 }
