@@ -42,7 +42,7 @@ public static class CourseEnrolmentRepository
     {
         using (var context = new SchoolContext())
         {
-            var courses = CourseRepository.DisplayCourses();
+            var courses = CourseRepository.GetCourses();
             
             // Checks if course exists or if any students have been enrolled to it.
             if (!courses.Contains(course))

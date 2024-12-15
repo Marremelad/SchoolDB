@@ -5,7 +5,7 @@ namespace SchoolDB.Repositories;
 public static class CourseRepository
 {
     // Returns a list of all courses in the database.
-    public static List<string> DisplayCourses()
+    public static List<string> GetCourses()
     {
         using (var context = new SchoolContext())
         {
