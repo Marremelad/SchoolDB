@@ -68,12 +68,14 @@ public static class CourseEnrolmentRepository
     // Returns a string of statistics for a specified course if at least one grade has been set.
     private static string StringOfCourseStats(string course, int numericHighestGrade, int numericLowestGrade, int numericAverageGrade)
     {
+        // Converts numeric value into a string.
         var highestGrade = GradeMapping.First(kvp => kvp.Value == numericHighestGrade).Key;
         var lowestGrade = GradeMapping.First(kvp => kvp.Value == numericLowestGrade).Key;
         var averageGrade = GradeMapping.First(kvp => kvp.Value == numericAverageGrade).Key;
         
         using (var context = new SchoolContext())
         {
+            // Get all students that got the highest grade.
             var queryForHighestGrade = context.CourseEnrolments
                 .Where(ce => ce.CourseIdFkNavigation.CourseName == course && ce.Grade == highestGrade)
                 .Select(s => 
@@ -81,6 +83,7 @@ public static class CourseEnrolmentRepository
                     $"{s.StudentIdFkNavigation.StudentLastName}")
                 .ToList();
 
+            // Get all students that got the lowest grade.
             var queryForLowestGrade = context.CourseEnrolments
                 .Where(ce => ce.CourseIdFkNavigation.CourseName == course && ce.Grade == lowestGrade)
                 .Select(s =>
@@ -88,6 +91,7 @@ public static class CourseEnrolmentRepository
                     $"{s.StudentIdFkNavigation.StudentLastName}")
                 .ToList();
 
+            // Create a string with course statistics.
             var result = string.Join("\n", new[] 
             {
                 $"Course: {course}",
