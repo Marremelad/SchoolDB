@@ -109,17 +109,17 @@ public static class Helper
         Expression<Func<Student, string>> sortBy;
         bool orderBy;
         
-        if ((int)choice[0] == 12 && (int)choice[1] == 14)
+        if ((int)choice[0] == 13 && (int)choice[1] == 15)
         {
             sortBy = s => s.StudentFirstName;
             orderBy = false; // Order by Descending.
         }
-        else if ((int)choice[0] == 11 && (int)choice[1] == 14)
+        else if ((int)choice[0] == 14 && (int)choice[1] == 15)
         {
             sortBy = s => s.StudentLastName;
             orderBy = false; // Order by Descending.
         }
-        else if((int)choice[0] == 12 && (int)choice[1] == 15)
+        else if((int)choice[0] == 13 && (int)choice[1] == 16)
         {
             sortBy = s => s.StudentFirstName;
             orderBy = true; // Order by Ascending.
