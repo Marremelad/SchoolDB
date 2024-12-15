@@ -4,6 +4,7 @@ namespace SchoolDB;
 
 public static class CourseEnrolmentRepository
 {
+    // Dictionary containing grades and their numeric values.
     private static readonly Dictionary<string, int> GradeMapping = new()
     {
         { "A", 5 },
@@ -14,6 +15,7 @@ public static class CourseEnrolmentRepository
         { "F", 0 }
     };
     
+    // Returns all grades set in the last 30 days.
     public static string GetRecentGrades()
     {
         using (var context = new SchoolContext())
@@ -35,6 +37,7 @@ public static class CourseEnrolmentRepository
         }
     }
 
+    // Returns grade statistics for a specific course. 
     public static string GetCourseStats(string course)
     {
         using (var context = new SchoolContext())
@@ -51,6 +54,7 @@ public static class CourseEnrolmentRepository
                 numericGrades.Add(GradeMapping[grade]);
             }
 
+            // Makes sure at least one grade has been set.
             if (numericGrades.Count == 0) return $"{course}\nNo available data for this course.";
             
             var numericHighestGrade = numericGrades.Max();
@@ -61,6 +65,7 @@ public static class CourseEnrolmentRepository
         }
     }
 
+    // Returns a string of statistics for a specified course if at least one grade has been set.
     private static string StringOfCourseStats(string course, int numericHighestGrade, int numericLowestGrade, int numericAverageGrade)
     {
         var highestGrade = GradeMapping.First(kvp => kvp.Value == numericHighestGrade).Key;
