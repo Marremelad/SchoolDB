@@ -1,5 +1,4 @@
-﻿
-using SchoolDB.Repositories;
+﻿using SchoolDB.Repositories;
 
 namespace SchoolDB.Services;
 
