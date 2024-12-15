@@ -1,7 +1,7 @@
-﻿using SchoolDB.Repositories;
+﻿using SchoolDB.Options;
+using SchoolDB.Repositories;
 using SchoolDB.Services;
 using Spectre.Console;
-using static SchoolDB.Options.MenuText;
 
 namespace SchoolDB.Views;
 
@@ -14,39 +14,39 @@ public static class MainMenu
         {
             Console.Clear();
             
-            var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MainMenuText);
+            var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MenuText.MainMenuText);
 
             switch (choice)
             {
-                case MenuChoice.Employees:
+                case MenuText.MenuChoice.Employees:
                     EmployeeMenu.DisplayEmployeeMenu();
                     break;
                 
-                case MenuChoice.Students:
+                case MenuText.MenuChoice.Students:
                     StudentMenu.DisplayStudentMenu();
                     break;
             
-                case MenuChoice.Classes:
+                case MenuText.MenuChoice.Classes:
                     ClassMenu.DisplayClassMenu();
                     break;
             
-                case MenuChoice.Courses:
+                case MenuText.MenuChoice.Courses:
                     CourseMenu.DisplayCourseMenu();
                     break;
                 
-                case MenuChoice.RecentlySetGrades:
+                case MenuText.MenuChoice.RecentlySetGrades:
                     Console.WriteLine(CourseEnrolmentRepository.DisplayRecentlySetGrades());
                     break;
                 
-                case MenuChoice.AddStudent:
+                case MenuText.MenuChoice.AddStudent:
                     Create.CreateNewStudent();
                     break;
                 
-                case MenuChoice.AddEmployee:
+                case MenuText.MenuChoice.AddEmployee:
                     Create.CreateNewEmployee();
                     break;
                 
-                case MenuChoice.Exit:
+                case MenuText.MenuChoice.Exit:
                     return;
             }
 
