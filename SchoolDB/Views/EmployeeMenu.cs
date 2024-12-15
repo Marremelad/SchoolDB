@@ -4,7 +4,7 @@ using static SchoolDB.Options.MenuText;
 
 namespace SchoolDB.Views;
 
-public class EmployeeMenu
+public static class EmployeeMenu
 {
     // Display the employee menu.
     public static void DisplayEmployeeMenu()
