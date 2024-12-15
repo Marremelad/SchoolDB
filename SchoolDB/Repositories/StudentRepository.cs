@@ -8,8 +8,8 @@ namespace SchoolDB.Repositories;
 public static class StudentRepository
 {
     // Returns a string of all students and their classes ordered by specific input.
-    public static string DisplayStudentsWithClasses<TKey>(
-        Expression<Func<Student, TKey>> orderByExpression,
+    public static string DisplayStudentsWithClasses<T>(
+        Expression<Func<Student, T>> orderByExpression,
         bool descending)
     {
         using (var context = new SchoolContext())
