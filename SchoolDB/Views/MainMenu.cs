@@ -5,6 +5,7 @@ namespace SchoolDB.Views;
 
 public static class MainMenu
 {
+    // Display the main menu.
     public static void DisplayMainMenu()
     {
         var choice = DisplayUi.DisplaySingleChoiceMenu("Welcome To SchoolDB", MainMenuText);
