@@ -23,9 +23,9 @@ public static class MenuText
         AiAndMachineLearning
     }
     
+    // Main Menu Options.
     public static readonly Dictionary<string, MenuChoice> MainMenuText = new()
     {
-        // Main Menu Options.
         { "All Employees", MenuChoice.Employees },
         { "Admins", MenuChoice.Admins },
         { "Teachers", MenuChoice.Teachers },
@@ -33,18 +33,18 @@ public static class MenuText
         { "Classes", MenuChoice.Classes }
     };
 
+    // Student Menu Options.
     public static readonly Dictionary<string, MenuChoice> StudentMenuText = new()
     {
-        // Student Menu Options.
         { "Sort by First Name", MenuChoice.SortByFirstName },
         { "Sort by Last Name", MenuChoice.SortByLastName },
         { "Order by Descending", MenuChoice.OrderByDescending },
         { "Order by Ascending", MenuChoice.OrderByAscending }
     };
 
+    // Class Menu Options.
     public static readonly Dictionary<string, MenuChoice> ClassMenuText = new()
     {
-        // Class Menu Options.
         { "SoftwareEngineering2024", MenuChoice.SoftwareEngineering },
         { "DataScience2024", MenuChoice.DataScience },
         { "AIAndMachineLearning2024", MenuChoice.AiAndMachineLearning }
