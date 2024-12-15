@@ -11,6 +11,5 @@ public static class CourseMenu
         var choice = DisplayUi.DisplaySingleChoiceMenu("Select a course to show it's statistics", CourseRepository.GetCourses());
 
         Console.WriteLine(CourseEnrolmentRepository.DisplayCourseStats((string)choice));
-        
     }
 }
