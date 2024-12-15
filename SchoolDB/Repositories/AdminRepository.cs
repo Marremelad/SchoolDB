@@ -26,8 +26,7 @@ public class AdminRepository
                 "Admins",
                 string.Join("\n", query.Select(q => $"Name: {q.Key}, Class: {string.Join(", ", q.Value)}"))
             });
-
-
+            
             return string.IsNullOrEmpty(result) ? "No admins found." : result;
         }
     }
