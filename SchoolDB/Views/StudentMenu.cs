@@ -1,7 +1,6 @@
 ﻿using SchoolDB.Options;
 using SchoolDB.Repositories;
 using SchoolDB.Services;
-using static SchoolDB.Options.MenuText;
 
 namespace SchoolDB.Views;
 
@@ -16,8 +15,8 @@ public static class StudentMenu
             
             // A list of type string that is converted into a list of type MenuChoice.
             var choice = DisplayUi.DisplayMultiChoiceMenu("Select options to filter by", MenuText.StudentMenuText)
-                .Where(StudentMenuText.ContainsKey)
-                .Select(key => StudentMenuText[key])
+                .Where(MenuText.StudentMenuText.ContainsKey)
+                .Select(key => MenuText.StudentMenuText[key])
                 .ToList();
             
             if (Helper.IsValidCombination(choice))
@@ -29,6 +28,5 @@ public static class StudentMenu
             Console.WriteLine("Invalid combination selected.");
             Thread.Sleep(2000);
         }
-        
     }
 }   
