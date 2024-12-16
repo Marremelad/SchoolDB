@@ -46,7 +46,7 @@ public static class CourseEnrolmentRepository
             
             // Checks if course exists or if any students have been enrolled to it.
             if (!courses.Contains(course))
-                return $"Course '{course}' does not exist or has no students enrolled in it.";
+                return $"Course '{course}' does not exist.";
             
             var query = context.CourseEnrolments
                 .Where(ce => ce.CourseIdFkNavigation.CourseName == course)
