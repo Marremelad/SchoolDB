@@ -4,7 +4,7 @@ namespace SchoolDB.Repositories;
 
 public class CourseAssignmentRepository
 {
-    // Returns a list of all teachers and their assigned courses.
+    // Returns a string of all teachers and their assigned courses.
     public static string DisplayTeachersWithCourses()
     {
         using (var context = new SchoolContext())

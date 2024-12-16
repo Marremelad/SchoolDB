@@ -5,7 +5,7 @@ namespace SchoolDB.Repositories;
 
 public class AdminRepository
 {
-    // Returns a list of all admins.
+    // Returns a string of all admins.
     public static string DisplayAdminsWithClasses()
     {
         using (var context = new SchoolContext())
